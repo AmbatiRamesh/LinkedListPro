@@ -45,6 +45,30 @@ public class LinkedList {
         else
             System.out.println("Element is not present in the list");
     }
+    public void addNodeAtPosition(int data, int position) {
+        Node newNode = new Node(data);
+        newNode.next = null;
+        if(position < 1) {
+            System.out.print("\nposition should be >= 1.");
+        } else if (position == 1) {
+            newNode.next = head;
+            head = newNode;
+        } else {
+            Node  current = new Node(data);
+            current = head;
+            for(int i = 1; i < position-1; i++) {
+                if(current != null) {
+                    current = current.next;
+                }
+            }
+            if(current != null) {
+                newNode.next = current.next;
+                current.next = newNode;
+            } else {
+                System.out.print("\nThe previous node is null.");
+            }
+        }
+    }
     public void display() {
         Node current = head;
         if(head == null) {
@@ -67,7 +91,9 @@ public class LinkedList {
         link.display();
         link.addNode(70);
         link.display();
-        link.searchNode(30);
+        link.searchNode(40);
+        link.display();
+        link.addNodeAtPosition(40,3);
         link.display();
     }
 }
