@@ -69,6 +69,17 @@ public class LinkedList {
             }
         }
     }
+    public void deleteParticularPosition(Object data) {
+        int index = 0;
+        Node left = head;
+        Node right = left.next;
+        while (right.data != (int)data) {
+            left = left.next;
+            right = right.next;
+            index++;
+        }
+        left.next = right.next;
+    }
     public void display() {
         Node current = head;
         if(head == null) {
@@ -94,6 +105,8 @@ public class LinkedList {
         link.searchNode(40);
         link.display();
         link.addNodeAtPosition(40,3);
+        link.display();
+        link.deleteParticularPosition(40);
         link.display();
     }
 }
