@@ -12,29 +12,32 @@ public class LinkedList {
     }
     public Node head = null;
     public Node tail = null;
-
-    public void append(int data) {
+    public void addNode(int data) {
         Node newNode = new Node(data);
-        if (head == null) {
+        if(head == null) {
             head = newNode;
-        } else if (head.next == null) {
-            head.next = newNode;
-        } else {
-            Node current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
+            tail = newNode;
+        }
+        else {
+            tail.next = newNode;
+            tail = newNode;
         }
     }
-
-    public void deleteFromStart() {
-        if (head == null) {
+    public void deleteFromEnd() {
+        if(head == null) {
             System.out.println("List is empty");
-        } else {
-            if (head != tail) {
-                head = head.next;
-            } else {
+            return;
+        }
+        else {
+            if(head != tail ) {
+                Node current = head;
+                while(current.next != tail) {
+                    current = current.next;
+                }
+                tail = current;
+                tail.next = null;
+            }
+            else {
                 head = tail = null;
             }
         }
@@ -46,7 +49,7 @@ public class LinkedList {
             return;
         }
         while(current != null) {
-            if(current.next != null)
+            if (current.next != null)
                 System.out.print(current.data + "->");
             else
                 System.out.println(current.data + "\n");
@@ -55,13 +58,13 @@ public class LinkedList {
     }
     public static void main(String[] args) {
         LinkedList link = new LinkedList();
-        link.append(56);
+        link.addNode(56);
         link.display();
-        link.append(30);
+        link.addNode(30);
         link.display();
-        link.append(70);
+        link.addNode(70);
         link.display();
-        link.deleteFromStart();
+        link.deleteFromEnd();
         link.display();
     }
 }
