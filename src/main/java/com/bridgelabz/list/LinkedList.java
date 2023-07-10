@@ -23,24 +23,27 @@ public class LinkedList {
             tail = newNode;
         }
     }
-    public void deleteFromEnd() {
+    public void searchNode(int data) {
+        Node current = head;
+        int i = 1;
+        boolean flag = false;
         if(head == null) {
             System.out.println("List is empty");
-            return;
         }
         else {
-            if(head != tail ) {
-                Node current = head;
-                while(current.next != tail) {
-                    current = current.next;
+            while(current != null) {
+                if(current.data == data) {
+                    flag = true;
+                    break;
                 }
-                tail = current;
-                tail.next = null;
-            }
-            else {
-                head = tail = null;
+                i++;
+                current = current.next;
             }
         }
+        if(flag)
+            System.out.println("Element is present in the list at the position : " + i);
+        else
+            System.out.println("Element is not present in the list");
     }
     public void display() {
         Node current = head;
@@ -64,7 +67,7 @@ public class LinkedList {
         link.display();
         link.addNode(70);
         link.display();
-        link.deleteFromEnd();
+        link.searchNode(30);
         link.display();
     }
 }
