@@ -28,42 +28,40 @@ public class LinkedList {
         }
     }
 
-    public void addNodeAtPosition(int data, int position) {
-        Node newNode = new Node(data);
-        int index = 1;
-        Node left = head;
-        Node right = left.next;
-        while (index < position) {
-            index++;
-            left = left.next;
-            right = right.next;
+    public void deleteFromStart() {
+        if (head == null) {
+            System.out.println("List is empty");
+        } else {
+            if (head != tail) {
+                head = head.next;
+            } else {
+                head = tail = null;
+            }
         }
-        newNode.next = right;
-        left.next = newNode;
     }
-
     public void display() {
         Node current = head;
-        if (head == null) {
+        if(head == null) {
             System.out.println("List is empty");
             return;
         }
-        while (current != null) {
-            if (current.next != null)
+        while(current != null) {
+            if(current.next != null)
                 System.out.print(current.data + "->");
             else
                 System.out.println(current.data + "\n");
             current = current.next;
         }
     }
-
     public static void main(String[] args) {
         LinkedList link = new LinkedList();
         link.append(56);
         link.display();
-        link.append(76);
+        link.append(30);
         link.display();
-        link.addNodeAtPosition(30, 1);
+        link.append(70);
+        link.display();
+        link.deleteFromStart();
         link.display();
     }
 }
