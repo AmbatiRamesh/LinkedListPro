@@ -80,6 +80,26 @@ public class LinkedList {
         }
         left.next = right.next;
     }
+    public void sortList() {
+        Node currNode = head, index = null;
+        int current;
+        if (head == null) {
+            return;
+        } else {
+            while (currNode != null) {
+                index = currNode.next;
+                while (index != null) {
+                    if (currNode.data >index.data) {
+                        current = currNode.data;
+                        currNode.data = index.data;
+                        index.data = current;
+                    }
+                    index = index.next;
+                }
+                currNode = currNode.next;
+            }
+        }
+    }
     public void display() {
         Node current = head;
         if(head == null) {
@@ -100,13 +120,11 @@ public class LinkedList {
         link.display();
         link.addNode(30);
         link.display();
+        link.addNode(40);
+        link.display();
         link.addNode(70);
         link.display();
-        link.searchNode(40);
-        link.display();
-        link.addNodeAtPosition(40,3);
-        link.display();
-        link.deleteParticularPosition(40);
+        link.sortList();
         link.display();
     }
 }
